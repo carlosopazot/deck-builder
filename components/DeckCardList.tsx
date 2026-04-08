@@ -6,7 +6,7 @@ import { DeckCard } from '@/types';
 import { MAX_CARD_QUANTITY } from '@/lib/constants';
 
 const CARD_GROUPS = [
-  { key: 'Commander', match: (t: string) => t.toLowerCase().includes('legendary') && t.toLowerCase().includes('creature') },
+  { key: 'Commander', match: (t: string) => { const lt = t.toLowerCase(); return lt.includes('legendary') && lt.includes('creature'); } },
   { key: 'Creatures', match: (t: string) => t.toLowerCase().includes('creature') },
   { key: 'Planeswalkers', match: (t: string) => t.toLowerCase().includes('planeswalker') },
   { key: 'Instants', match: (t: string) => t.toLowerCase().includes('instant') },
