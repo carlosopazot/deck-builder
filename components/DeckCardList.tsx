@@ -1,5 +1,6 @@
 'use client';
 import { Table, Typography, InputNumber, Button, Tabs, Space } from 'antd';
+import type { ColumnType } from 'antd/es/table';
 import { DeleteOutlined } from '@ant-design/icons';
 import { DeckCard } from '@/types';
 
@@ -21,7 +22,7 @@ const CARD_GROUPS = [
 function groupCards(cards: DeckCard[]) {
   const groups: Record<string, DeckCard[]> = {};
   const assigned = new Set<string>();
-  
+
   for (const group of CARD_GROUPS) {
     const matching = cards.filter(c => !assigned.has(c.id) && group.match(c.typeLine));
     if (matching.length > 0) {
@@ -29,7 +30,7 @@ function groupCards(cards: DeckCard[]) {
       matching.forEach(c => assigned.add(c.id));
     }
   }
-  
+
   return groups;
 }
 
@@ -40,9 +41,12 @@ interface Props {
   onRemoveCard?: (id: string) => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getColumns(editable: boolean, onUpdateQuantity?: (id: string, qty: number) => void, onRemoveCard?: (id: string) => void): any[] {
-  const cols: any[] = [
+function getColumns(
+  editable: boolean,
+  onUpdateQuantity?: (id: string, qty: number) => void,
+  onRemoveCard?: (id: string) => void,
+): ColumnType<DeckCard>[] {
+  const cols: ColumnType<DeckCard>[] = [
     {
       title: 'Qty',
       dataIndex: 'quantity',

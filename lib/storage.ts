@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { User, Deck } from '@/types';
+import { StoredUser, Deck } from '@/types';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 
@@ -27,11 +27,11 @@ function writeJSON<T>(filename: string, data: T): void {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 
-export function getUsers(): User[] {
-  return readJSON<User[]>('users.json', []);
+export function getStoredUsers(): StoredUser[] {
+  return readJSON<StoredUser[]>('users.json', []);
 }
 
-export function saveUsers(users: User[]): void {
+export function saveUsers(users: StoredUser[]): void {
   writeJSON('users.json', users);
 }
 

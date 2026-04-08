@@ -5,6 +5,10 @@ export interface User {
   createdAt: string;
 }
 
+export interface StoredUser extends User {
+  password: string;
+}
+
 export type DeckFormat = 'Standard' | 'Modern' | 'Commander' | 'Pauper' | 'Pioneer' | 'Legacy';
 
 export const FORMAT_RULES: Record<DeckFormat, { min: number; max: number; label: string }> = {

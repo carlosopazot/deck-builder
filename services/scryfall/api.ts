@@ -2,10 +2,9 @@ import { ScryfallCard } from '@/types';
 
 export async function searchCards(query: string): Promise<ScryfallCard[]> {
   if (!query || query.length < 2) return [];
-  const res = await fetch(`https://api.scryfall.com/cards/search?q=${encodeURIComponent(query)}&order=name&unique=prints`);
+  const res = await fetch(`/api/cards/search?q=${encodeURIComponent(query)}`);
   if (!res.ok) return [];
-  const data = await res.json();
-  return data.data || [];
+  return res.json();
 }
 
 export function getCardImageUrl(card: ScryfallCard): string {
