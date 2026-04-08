@@ -3,9 +3,7 @@ import { Table, Typography, InputNumber, Button, Tabs, Space } from 'antd';
 import type { ColumnType } from 'antd/es/table';
 import { DeleteOutlined } from '@ant-design/icons';
 import { DeckCard } from '@/types';
-
-// Standard MTG rule: maximum 4 copies of any non-basic-land card per deck
-const MAX_CARD_QUANTITY = 4;
+import { MAX_CARD_QUANTITY } from '@/lib/constants';
 
 const CARD_GROUPS = [
   { key: 'Commander', match: (t: string) => t.toLowerCase().includes('legendary') && t.toLowerCase().includes('creature') },
