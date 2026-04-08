@@ -5,7 +5,7 @@ import { DeckCard } from '@/types';
 
 const CARD_GROUPS = [
   { key: 'Commander', match: (t: string) => t.toLowerCase().includes('legendary') && t.toLowerCase().includes('creature') },
-  { key: 'Creatures', match: (t: string) => t.toLowerCase().includes('creature') && !t.toLowerCase().includes('legendary creature') },
+  { key: 'Creatures', match: (t: string) => t.toLowerCase().includes('creature') },
   { key: 'Planeswalkers', match: (t: string) => t.toLowerCase().includes('planeswalker') },
   { key: 'Instants', match: (t: string) => t.toLowerCase().includes('instant') },
   { key: 'Sorceries', match: (t: string) => t.toLowerCase().includes('sorcery') },
