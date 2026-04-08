@@ -3,6 +3,9 @@ import { Table, Typography, InputNumber, Button, Tabs, Space } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import { DeckCard } from '@/types';
 
+// Standard MTG rule: maximum 4 copies of any non-basic-land card per deck
+const MAX_CARD_QUANTITY = 4;
+
 const CARD_GROUPS = [
   { key: 'Commander', match: (t: string) => t.toLowerCase().includes('legendary') && t.toLowerCase().includes('creature') },
   { key: 'Creatures', match: (t: string) => t.toLowerCase().includes('creature') },
@@ -48,7 +51,7 @@ function getColumns(editable: boolean, onUpdateQuantity?: (id: string, qty: numb
         editable ? (
           <InputNumber
             min={1}
-            max={4}
+            max={MAX_CARD_QUANTITY}
             value={qty}
             size="small"
             onChange={(val) => val && onUpdateQuantity?.(record.id, val)}

@@ -2,6 +2,8 @@ import { useState, useCallback, useRef } from 'react';
 import { ScryfallCard } from '@/types';
 import { searchCards } from '@/services/scryfall/api';
 
+const CARD_SEARCH_DEBOUNCE_MS = 400;
+
 export function useCardSearch() {
   const [results, setResults] = useState<ScryfallCard[]>([]);
   const [loading, setLoading] = useState(false);
@@ -21,7 +23,7 @@ export function useCardSearch() {
       } finally {
         setLoading(false);
       }
-    }, 400);
+    }, CARD_SEARCH_DEBOUNCE_MS);
   }, []);
 
   return { results, loading, search };
