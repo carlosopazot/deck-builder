@@ -12,7 +12,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       theme={{
         algorithm: theme.darkAlgorithm,
         token: {
-          colorPrimary: '#722ed1',
+          colorPrimary: '#6AC825',
           borderRadius: 8,
         },
       }}
